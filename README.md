@@ -1,4 +1,4 @@
-# README - Temporizador de um Disparo (One Shot)
+# Temporizador de um Disparo (One Shot)
 
 ## Descrição
 Este projeto implementa um temporizador "One Shot" utilizando a Raspberry Pi Pico W. O sistema aciona e desliga LEDs em sequência após o pressionamento de um botão, utilizando a API `add_alarm_in_ms()` do Pico SDK.
@@ -20,3 +20,6 @@ Este projeto implementa um temporizador "One Shot" utilizando a Raspberry Pi Pic
 
 ## Autor
 - **Kalel Ezveither**
+
+## Vídeo de teste 
+https://drive.google.com/file/d/1PJbrVdw59qLVUCztXjlyyevaqooHvF1i/view?usp=drive_link
