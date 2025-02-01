@@ -1,42 +1,22 @@
-# README - Sistema de Semáforo e Controle de LEDs com Raspberry Pi Pico W
-
-## Autor
-Kalel Ezveither
+# README - Temporizador de um Disparo (One Shot)
 
 ## Descrição
-Este projeto implementa um **sistema de semáforo** e um **controle de LEDs via botão** utilizando a **Raspberry Pi Pico W**. O código foi desenvolvido em **C** com o **Pico SDK**.
-
-## Funcionamento
-### Modo Semáforo (Automático)
-- Os LEDs operam como um semáforo tradicional: **Vermelho → Amarelo → Verde**.
-- Cada mudança de estado ocorre a cada **3 segundos**.
-- O status do semáforo é exibido via **UART (porta serial)**.
-
-### Modo Botão (Intervenção Manual)
-- O botão (GPIO 5) **pausa o semáforo** e acende todos os LEDs.
-- Após pressionar, os LEDs **desligam um a um** a cada **3 segundos**.
-- Quando todos os LEDs forem desligados, o semáforo **retoma automaticamente**.
-- O botão só pode ser pressionado novamente após a sequência manual terminar.
+Este projeto implementa um temporizador "One Shot" utilizando a Raspberry Pi Pico W. O sistema aciona e desliga LEDs em sequência após o pressionamento de um botão, utilizando a API `add_alarm_in_ms()` do Pico SDK.
 
 ## Componentes Utilizados
 - **Microcontrolador:** Raspberry Pi Pico W
-- **LEDs:** RGB (conectados aos GPIOs 11, 12 e 13)
-- **Botão:** Pushbutton (conectado ao GPIO 5)
-- **Resistores:** 330Ω para cada LED
+- **LEDs:** 3 LEDs (azul, vermelho e verde)
+- **Resistores:** 3 resistores de 330Ω
+- **Botão:** Pushbutton
 
-## Como Rodar o Código
-1. **Configurar o ambiente** com o Pico SDK no **VS Code**.
-2. **Compilar e enviar** o código para a Raspberry Pi Pico W.
-3. **Monitorar a saída** pela UART para visualizar logs do sistema.
-4. **Testar no Wokwi** ou na placa real com a ferramenta **BitDogLab**.
+## Funcionamento
+1. Ao pressionar o botão (conectado ao GPIO 5), os três LEDs acendem simultaneamente.
+2. Após 3 segundos, o LED verde (GPIO 11) desliga.
+3. Após mais 3 segundos (totalizando 6 segundos), o LED vermelho (GPIO 13) desliga.
+4. Após mais 3 segundos (totalizando 9 segundos), o LED azul (GPIO 12) desliga.
+5. Somente quando todos os LEDs estiverem apagados, um novo pressionamento do botão reiniciará o processo.
+6. O botão possui debounce por software para evitar leituras incorretas.
 
-## Requisitos Técnicos
-- **C com Pico SDK**
-- **Plataforma VS Code**
-- **Simulação no Wokwi ou hardware real**
-- **Controle via UART para depuração**
 
----
-
-Projeto desenvolvido por **Kalel Ezveither**.
-
+## Autor
+- **Kalel Ezveither**
